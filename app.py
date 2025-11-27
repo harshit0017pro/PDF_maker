@@ -4,7 +4,7 @@ import streamlit as st
 import img2pdf  # Library for converting images to PDF
 
 
-# Set the title and instructions for the app
+# Set the title and instructions 
 st.title("Welcome to PDF converter")
 st.text("To start upload an image below")
 
@@ -15,13 +15,12 @@ images = st.file_uploader(
     accept_multiple_files=True
 )
 
-# Button to trigger the conversion
+# Button for conversion
 convert_btn = st.button("Convert")
 
 # If images are uploaded and the convert button is clicked
 if images and convert_btn:
     # Read each uploaded image file 
-    # This prepares the images for conversion to PDF using img2pdf
     pix_list = [img.read() for img in images]
     # Convert the list of images to a single PDF
     pdf_c = img2pdf.convert(pix_list)
