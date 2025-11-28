@@ -1,8 +1,7 @@
-
+# Simple pdf maker 
 # Import necessary libraries
 import streamlit as st
 import img2pdf  # Library for converting images to PDF
-
 
 # Set the title and instructions 
 st.title("Welcome to PDF converter")
@@ -14,6 +13,7 @@ images = st.file_uploader(
     type=["jpg", "png", "jpeg"],
     accept_multiple_files=True
 )
+st.caption("Tip: You can drag and drop images here!")
 
 # Button for conversion
 convert_btn = st.button("Convert")
@@ -25,6 +25,7 @@ if images and convert_btn:
     # Convert the list of images to a single PDF
     pdf_c = img2pdf.convert(pix_list)
     # Provide a download button for the generated PDF
+    st.success("your pdf is ready")
     st.download_button(
         label="Download PDF",
         data=pdf_c,
@@ -33,6 +34,8 @@ if images and convert_btn:
     )
 
 
-
-
+# Sidebar 
+st.sidebar.title("PDF Converter Options")
+st.sidebar.markdown("Upload images and convert them to a PDF file easily.")
+st.sidebar.info("1. Upload images\n2. Click Convert\n3. Download your PDF")
 
